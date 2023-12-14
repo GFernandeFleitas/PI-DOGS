@@ -1,0 +1,29 @@
+.container {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  max-width: 250px;
+  border: solid 1px black;
+  background-color: #9ad1d4;
+  border-radius: 10px;
+}
+
+.dogPicture {
+  width: 210px;
+  max-height: 200px;
+  object-fit: scale-down;
+}
+
+.dogName {
+  font-size: 15px;
+  margin: 2px;
+  font-weight: bold;
+}
+
+.temperamentDescription {
+  font-size: 13px;
+  margin: 0px;
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -1,13 +1,20 @@
+import style from "../Card/Card.module.css";
+
 const Card = ({ dog }) => {
   const { id, name, image, temperament, weight } = dog;
 
   return (
-    <div>
-      <img src={image.url} alt={name} />
-      <p>{id}</p>
-      <p>Name: {name}</p>
-      <p>Temperament: {temperament}</p>
-      <p>{weight.metric}</p>
+    <div className={style.container}>
+      <img className={style.dogPicture} src={image.url} alt={name} />
+      <p className={style.dogName}>{name}</p>
+      <p className={style.temperamentDescription}>
+        <b>This dog is: </b>
+        {temperament}
+      </p>
+      <p>
+        {weight.metric}
+        <span> Kg.</span>
+      </p>
     </div>
   );
 };
