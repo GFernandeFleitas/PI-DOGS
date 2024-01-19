@@ -2,7 +2,11 @@
   margin: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  min-height: 300px;
+  max-height: 300px;
+
   max-width: 250px;
+  min-width: 250px;
   border: solid 1px black;
   background-color: #9ad1d4;
   border-radius: 10px;

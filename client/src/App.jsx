@@ -1,27 +1,36 @@
 import "./App.css";
 import Cards from "./components/Cards/Cards";
-import axios from "axios";
+
 import { useEffect, useState } from "react";
+import { getAllDogs } from "./store/actions";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const [allDogs, setAllDogs] = useState([]);
+  const allDogs = useSelector((state) => state.allDogs);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const getDogs = async () => {
-      const response = await axios("http://localhost:3001/dogs");
-      setAllDogs(response.data);
+    const fetchData = async () => {
+      try {
+        dispatch(getAllDogs());
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    getDogs();
+    fetchData();
   }, []);
 
   return allDogs ? (
     <div className="App">
-      <h1>Henry Dogs</h1>
-      <Cards data={allDogs} />
+      <h1>Find your DOGGY</h1>
+      <Cards dogs={allDogs} />
     </div>
   ) : (
-    <></>
+    <>
+      <h5>NO DOGS</h5>
+    </>
   );
 }
 
