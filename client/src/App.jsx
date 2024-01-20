@@ -6,8 +6,6 @@ import { getAllDogs } from "./store/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const allDogs = useSelector((state) => state.allDogs);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +19,8 @@ function App() {
 
     fetchData();
   }, []);
+
+  const allDogs = useSelector((state) => state.allDogs);
 
   return allDogs ? (
     <div className="App">
