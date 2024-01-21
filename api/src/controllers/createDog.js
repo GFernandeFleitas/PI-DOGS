@@ -3,13 +3,15 @@ const { Dog } = require("../db.js");
 
 const createDogs = async (req, res) => {
   try {
-    const { name, image, height, temperament } = req.body;
-    if (name && image && height && temperament) {
+    const { name, image, height, temperament, weight, life_span } = req.body;
+    if (name && image && height && temperament && weight && life_span) {
       const createdDog = await Dog.create({
         name,
         image,
         height,
         temperament,
+        weight,
+        life_span,
       });
 
       if (createdDog) {

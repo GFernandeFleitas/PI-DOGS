@@ -1,0 +1,49 @@
+.transparentContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  position: relative;
+  padding: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  min-height: 300px;
+  max-width: 640px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  border-top: 15px solid rgb(255, 169, 0);
+  border-bottom: 15px solid rgb(255, 169, 0);
+}
+
+.temperamentSelection {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 3px; /* Adjust the gap between items as needed */
+  text-align: left;
+}
+
+.temperamentSelection label {
+  font-size: small;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 1px;
+}
+.temperamentSelection input {
+  margin: 0px;
+  padding: 0px;
+}
+
+.temperamentOption {
+  display: flex;
+  align-items: center;
+}

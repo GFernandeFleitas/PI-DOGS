@@ -1,7 +1,9 @@
-import { GET_ALL_DOGS } from "./actions";
+import { GET_ALL_DOGS, SEARCH_DOGS, TEMPERAMENTS } from "./actions";
 
 const initialState = {
   allDogs: [],
+  searchedDogs: [],
+  temperaments: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -10,6 +12,18 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allDogs: action.payload,
+      };
+
+    case SEARCH_DOGS:
+      return {
+        ...state,
+        searchedDogs: action.payload,
+      };
+
+    case TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload,
       };
 
     default:

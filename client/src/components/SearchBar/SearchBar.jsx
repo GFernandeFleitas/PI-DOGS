@@ -1,12 +1,30 @@
 /* eslint-disable react/prop-types */
 import style from "./SearchBar.module.css";
+import { searchDogs } from "../../store/actions";
+import { useDispatch } from "react-redux";
+import TemperamentFilter from "../TemperamentFilter/TemperamentFilter";
+import { useState } from "react";
 const SearchBar = (props) => {
-  const { searchedWord, setSortingOrder, setDataOrigin } = props;
+  const {
+    searchedWord,
+    setSortingOrder,
+    setDataOrigin,
+    setFilteredTemperaments,
+    filteredTemperaments,
+  } = props;
+  const dispatch = useDispatch();
+
+  const [trigger, setTrigger] = useState(false);
 
   const handleDogSearch = (event) => {
     const typedWord = event.target.value;
-    console.log(typedWord);
-    searchedWord(typedWord);
+    if (typedWord !== "") {
+      searchedWord(typedWord);
+    } else {
+      searchedWord(null);
+    }
+
+    dispatch(searchDogs(typedWord));
   };
 
   const handleSortingOrderSelection = (event) => {
@@ -15,6 +33,10 @@ const SearchBar = (props) => {
 
   const handleDataOriginSelection = (event) => {
     setDataOrigin(event.target.value);
+  };
+
+  const handleFilter = () => {
+    setTrigger(true);
   };
   return (
     <div className={style.searchBarContainer}>
@@ -25,6 +47,7 @@ const SearchBar = (props) => {
         id="searchBox"
         placeholder={"🔍 Buscar raza..."}
         type="text"
+        autoComplete="off"
       />
 
       <select
@@ -44,6 +67,16 @@ const SearchBar = (props) => {
         <option value="API">API</option>
         <option value="DATABASE">DATABASE</option>
       </select>
+      <button onClick={handleFilter}>Temperaments</button>
+      {trigger ? (
+        <TemperamentFilter
+          setFilteredTemperaments={setFilteredTemperaments}
+          setTrigger={setTrigger}
+          filteredTemperaments={filteredTemperaments}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
